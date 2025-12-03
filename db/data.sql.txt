@@ -1,0 +1,136 @@
+-- Вибір бази даних (якщо потрібно)
+USE clothing_store;
+
+-- ============================
+--  Дані для таблиці categories
+-- ============================
+INSERT INTO categories (category_id, parent_category_id, name_uk, name_en, description_uk, description_en, image_url, is_active) VALUES
+(1, NULL, 'Жіночий одяг', 'Women clothing', 'Основний розділ жіночого одягу', 'Main women clothing section', NULL, TRUE),
+(2, NULL, 'Чоловічий одяг', 'Men clothing', 'Основний розділ чоловічого одягу', 'Main men clothing section', NULL, TRUE),
+(3, 1, 'Сукні', 'Dresses', 'Жіночі сукні', 'Women dresses', NULL, TRUE),
+(4, 1, 'Футболки', 'T-shirts', 'Жіночі футболки', 'Women T-shirts', NULL, TRUE),
+(5, 2, 'Футболки', 'T-shirts', 'Чоловічі футболки', 'Men T-shirts', NULL, TRUE),
+(6, 2, 'Куртки', 'Jackets', 'Чоловічі куртки', 'Men jackets', NULL, TRUE);
+
+-- ============================
+--  Дані для таблиці brands
+-- ============================
+INSERT INTO brands (brand_id, brand_name, description_uk, description_en, logo_url) VALUES
+(1, 'UrbanStyle', 'Молодіжний міський стиль', 'Urban youth style', NULL),
+(2, 'ClassicLine', 'Класичний одяг', 'Classic clothing', NULL),
+(3, 'SportPro', 'Спортивний одяг', 'Sport wear', NULL),
+(4, 'EcoWear', 'Екологічні матеріали', 'Eco materials', NULL),
+(5, 'StreetMood', 'Вулична мода', 'Street fashion', NULL);
+
+-- ============================
+--  Дані для таблиці products
+-- ============================
+INSERT INTO products (product_id, category_id, brand_id, name_uk, name_en, description_uk, description_en, base_price, sku, is_new, is_featured, is_active) VALUES
+(1, 3, 1, 'Чорна сукня міні', 'Black mini dress', 'Класична чорна сукня міні', 'Classic black mini dress', 1200.00, 'DRS-BLK-001', TRUE, TRUE, TRUE),
+(2, 3, 2, 'Червона сукня вечірня', 'Red evening dress', 'Елегантна вечірня сукня', 'Elegant evening dress', 1800.00, 'DRS-RED-002', TRUE, FALSE, TRUE),
+(3, 4, 5, 'Жіноча футболка біла', 'Women white T-shirt', 'Базова біла футболка', 'Basic white tee', 450.00, 'WT-TSH-WHT-001', FALSE, TRUE, TRUE),
+(4, 5, 5, 'Чоловіча футболка чорна', 'Men black T-shirt', 'Базова чорна футболка', 'Basic black tee', 470.00, 'MT-TSH-BLK-001', FALSE, TRUE, TRUE),
+(5, 5, 3, 'Спортивна футболка чоловіча', 'Men sport T-shirt', 'Дихаюча тканина для спорту', 'Breathable sport fabric', 520.00, 'MT-TSH-SPR-001', TRUE, FALSE, TRUE),
+(6, 6, 2, 'Куртка демісезонна синя', 'Blue mid-season jacket', 'Легка куртка для весни/осені', 'Light jacket for spring/autumn', 2300.00, 'JCK-BLU-001', FALSE, TRUE, TRUE),
+(7, 6, 4, 'Еко-куртка з перероблених матеріалів', 'Eco recycled jacket', 'Куртка з екоматеріалів', 'Jacket from eco materials', 2600.00, 'JCK-ECO-001', TRUE, TRUE, TRUE),
+(8, 4, 3, 'Жіноча спортивна футболка', 'Women sport T-shirt', 'Футболка для тренувань', 'Training T-shirt', 490.00, 'WT-TSH-SPR-001', FALSE, FALSE, TRUE),
+(9, 3, 1, 'Повсякденна сукня з кишенями', 'Casual dress with pockets', 'Зручна сукня на кожен день', 'Comfortable everyday dress', 1100.00, 'DRS-CAS-001', FALSE, FALSE, TRUE),
+(10, 5, 1, 'Чоловіча футболка oversize', 'Men oversize T-shirt', 'Вільний крій, бавовна', 'Loose fit cotton T-shirt', 530.00, 'MT-TSH-OVR-001', TRUE, TRUE, TRUE);
+
+-- ============================
+--  Дані для таблиці product_variants
+-- ============================
+INSERT INTO product_variants (variant_id, product_id, size, color, material, stock_quantity, price_adjustment) VALUES
+(1, 1, 'S', 'Чорний', 'Бавовна', 10, 0),
+(2, 1, 'M', 'Чорний', 'Бавовна', 8, 0),
+(3, 1, 'L', 'Чорний', 'Бавовна', 5, 50),
+
+(4, 2, 'M', 'Червоний', 'Поліестер', 6, 0),
+(5, 2, 'L', 'Червоний', 'Поліестер', 4, 100),
+
+(6, 3, 'XS', 'Білий', 'Бавовна', 15, 0),
+(7, 3, 'S',  'Білий', 'Бавовна', 15, 0),
+(8, 3, 'M',  'Білий', 'Бавовна', 12, 0),
+
+(9, 4, 'M', 'Чорний', 'Бавовна', 20, 0),
+(10,4, 'L', 'Чорний', 'Бавовна', 18, 0),
+
+(11,5, 'M', 'Синій', 'Поліестер', 10, 0),
+(12,5, 'L', 'Синій', 'Поліестер', 7, 0),
+
+(13,6, 'M', 'Синій', 'Плащівка', 5, 0),
+(14,6, 'L', 'Синій', 'Плащівка', 3, 0),
+
+(15,7, 'M', 'Зелений', 'Рецикл матеріал', 4, 150),
+(16,7, 'L', 'Зелений', 'Рецикл матеріал', 2, 150),
+
+(17,8, 'S', 'Рожевий', 'Поліестер', 9, 0),
+(18,8, 'M', 'Рожевий', 'Поліестер', 7, 0),
+
+(19,9, 'M', 'Бежевий', 'Бавовна', 6, 0),
+(20,10,'L', 'Сірий', 'Бавовна', 10, 0);
+
+-- ============================
+--  Дані для таблиці customers
+-- ============================
+INSERT INTO customers (customer_id, first_name, last_name, email, phone, password_hash) VALUES
+(1, 'Олена', 'Коваль', 'olena.koval@example.com', '+380501112233', 'hash1'),
+(2, 'Ігор', 'Мельник', 'ihor.melnyk@example.com', '+380671234567', 'hash2'),
+(3, 'Марія', 'Шевченко', 'maria.shevchenko@example.com', '+380931112233', 'hash3'),
+(4, 'Андрій', 'Бондар', 'andriy.bondar@example.com', '+380503334455', 'hash4'),
+(5, 'Світлана', 'Романюк', 'svitlana.romanyuk@example.com', '+380671112244', 'hash5');
+
+-- ============================
+--  Дані для таблиці customer_addresses
+-- ============================
+INSERT INTO customer_addresses (address_id, customer_id, city, street, house_number, apartment, address_type) VALUES
+(1, 1, 'Київ', 'вул. Хрещатик', '10', '15', 'shipping'),
+(2, 1, 'Київ', 'вул. Хрещатик', '10', '15', 'billing'),
+(3, 2, 'Львів', 'просп. Свободи', '25', '8', 'shipping'),
+(4, 2, 'Львів', 'просп. Свободи', '25', '8', 'billing'),
+(5, 3, 'Одеса', 'вул. Дерибасівська', '7', NULL, 'shipping'),
+(6, 4, 'Дніпро', 'вул. Центральна', '12', '22', 'shipping'),
+(7, 5, 'Харків', 'вул. Сумська', '5', '34', 'shipping'),
+(8, 5, 'Харків', 'вул. Сумська', '5', '34', 'billing');
+
+-- ============================
+--  Дані для таблиці orders
+-- ============================
+INSERT INTO orders 
+(order_id, customer_id, shipping_address_id, billing_address_id, order_status, payment_status, payment_method, subtotal, delivery_cost, tax_amount, discount_amount, total) VALUES
+(1, 1, 1, 2, 'delivered', 'paid', 'card', 1650.00, 80.00, 0.00, 0.00, 1730.00),
+(2, 2, 3, 4, 'shipped', 'paid', 'card', 2300.00, 100.00, 0.00, 200.00, 2200.00),
+(3, 3, 5, 5, 'pending', 'unpaid', 'cod', 520.00, 80.00, 0.00, 0.00, 600.00),
+(4, 5, 7, 8, 'confirmed', 'paid', 'card', 470.00, 70.00, 0.00, 0.00, 540.00);
+
+-- ============================
+--  Дані для таблиці order_items
+-- ============================
+INSERT INTO order_items (order_item_id, order_id, product_id, variant_id, quantity, unit_price, total_price) VALUES
+(1, 1, 1, 2, 1, 1200.00, 1200.00),
+(2, 1, 3, 7, 1, 450.00, 450.00),
+
+(3, 2, 6, 13, 1, 2300.00, 2300.00),
+
+(4, 3, 5, 11, 1, 520.00, 520.00),
+
+(5, 4, 4, 9, 1, 470.00, 470.00);
+
+-- ============================
+--  Дані для таблиці reviews
+-- ============================
+INSERT INTO reviews (review_id, product_id, customer_id, order_id, rating, title_uk, title_en, comment_uk, comment_en, is_approved) VALUES
+(1, 1, 1, 1, 5, 'Ідеальна сукня', 'Perfect dress', 'Сидить чудово, тканина приємна.', 'Fits perfect, nice fabric.', TRUE),
+(2, 3, 1, 1, 4, 'Хороша футболка', 'Good T-shirt', 'Все сподобалось, але трохи тонка.', 'Nice but a bit thin.', TRUE),
+(3, 6, 2, 2, 5, 'Тепла куртка', 'Warm jacket', 'Дуже тепла і зручна.', 'Very warm and comfortable.', TRUE),
+(4, 5, 3, 3, 4, 'Зручна спортивна', 'Comfortable sport tee', 'Добре підходить для тренувань.', 'Great for workouts.', TRUE),
+(5, 4, 5, 4, 5, 'Улюблена футболка', 'Favourite T-shirt', 'Крутий фасон і колір.', 'Cool fit and color.', TRUE);
+
+-- ============================
+--  Дані для таблиці discounts
+-- ============================
+INSERT INTO discounts (discount_id, discount_type, discount_value, start_date, end_date, usage_limit) VALUES
+(1, 'percentage', 10.00, '2025-01-01', '2025-12-31', 100),
+(2, 'percentage', 20.00, '2025-03-01', '2025-06-30', 50),
+(3, 'fixed', 150.00, '2025-04-01', '2025-08-31', NULL);
+ss

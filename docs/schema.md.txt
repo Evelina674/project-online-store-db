@@ -1,0 +1,13 @@
+Схема бази даних
+Основні сутності:
+Categories
+Brands
+Products
+Product_Attributes
+Product_Variants
+Customers
+Customer_Addresses
+Orders
+Order_Items
+ Reviews
+ Discounts

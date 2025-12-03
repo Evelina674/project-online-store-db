@@ -1,0 +1,27 @@
+4. Інструкції з розгортання
+Вимоги
+MySQL 8.0+ або MariaDB 10.5+
+PHPMyAdmin / DBeaver / MySQL Workbench
+Кроки встановлення
+1. Створити базу даних
+CREATE DATABASE clothing_store
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+s
+Імпортувати DDL
+Взяти всі SQL-скрипти зі своєї курсової та виконати у такому порядку:
+categories
+brands
+products
+product_attributes
+product_variants
+customers
+customer_addresses
+orders
+order_items
+reviews
+discounts
+Заповнити тестовими даними
+Перевірити залежності
+Перевірити FOREIGN KEY integrity через Workbench → Tools → Validate.
+Запустити веб-демо
